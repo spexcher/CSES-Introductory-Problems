@@ -334,7 +334,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -354,6 +354,23 @@ signed main()
 void solve()
 {
     int n;
-    
-    
+    cin >> n;
+    while (1)
+    {
+        if (n % 2 == 0)
+        {
+            cout << n << sp;
+            n = n / 2;
+        }
+        else if (n % 2 == 1 && n != 1)
+        {
+            cout << n << sp;
+            n = 3 * n + 1;
+        }
+        else
+        {
+            print(1);
+            break;
+        }
+    }
 }
