@@ -340,9 +340,40 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int n, x;
+    cin >> n >> x;
+    vi v(n);
+    cin >> v;
+    v.pb(INT_MAX);
+    sort(v.begin(), v.end() - 1);
+    int ans = 0;
+    int tomultiply = 0;
+    auto poss = [&](int to_play, int i, int mid)
+    {
+        return (x - to_play >= v[i] + mid);
+    };
+    fo(i, n)
+    {
+        if (x < v[i])
+            break;
+        int lo = 0, hi = 1e9, precision = 40;
+        while (precision--)
+        {
+            int mid = lo + ((hi - lo) >> 1);
+            int to_play = mid * tomultiply;
+            debug(to_play);
+            if (poss(to_play, i, mid))
+                lo = mid;
+            else
+                hi = mid;
+        }
+        x -= v[i];
+
+        int ok = lo + 1;
+        debug(ok);
+        debug(x);
+        ans += ok;
+        tomultiply++;
+    }
+    print(ans);
 }

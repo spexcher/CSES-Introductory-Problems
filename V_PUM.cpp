@@ -321,7 +321,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -340,9 +340,12 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int n;
+    cin >> n;
+    int k = 1;
+    fo(i, n)
+    {
+        print(k << sp << k + 1 << sp << k + 2 << sp << "PUM");
+        k += 4;
+    }
 }

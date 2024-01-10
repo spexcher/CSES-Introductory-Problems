@@ -321,17 +321,17 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
-        eprintf("--- Case #%lld start ---\n", i);
-        eprintf("Case #%lld: ", i);
-        solve();
-        eprintf("--- Case #%lld end ---\n", i);
-        eprintf("time = %.5lf\n", getCurrentTime());
-        eprintf("++++++++++++++++++++\n");
-
+        // eprintf("--- Case #%lld start ---\n", i);
+        // eprintf("Case #%lld: ", i);
         // solve();
+        // eprintf("--- Case #%lld end ---\n", i);
+        // eprintf("time = %.5lf\n", getCurrentTime());
+        // eprintf("++++++++++++++++++++\n");
+
+        solve();
     }
 
     return 0;
@@ -340,9 +340,28 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int n;
+    cin >> n;
+    int k = n;
+    int nstar = 1;
+    Fo(i, 1, n + 1)
+    {
+        Fo(spa, 1, k) cout << sp;
+        Fo(start, 1, nstar + 1) cout << "*";
+        if (i != n)
+            pl;
+        k--;
+        nstar += 2;
+    }
+    pl;
+    nstar--;
+    Fo(i, 1, n + 1)
+    {
+        Fo(spa, k, 0) cout << sp;
+        Fo(start, nstar, 1) cout << "*";
+        if (i != n)
+            pl;
+        k++;
+        nstar -= 2;
+    }
 }

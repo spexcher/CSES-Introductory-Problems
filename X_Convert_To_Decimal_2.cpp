@@ -340,9 +340,8 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int n;
+    cin >> n;
+    int q = setbits(n);
+    print((1 << q) - 1);
 }

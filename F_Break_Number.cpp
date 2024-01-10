@@ -340,16 +340,15 @@ signed main()
 
 void solve()
 {
-    int n, a, b, c;
+    int n;
     cin >> n;
-    vi dp(n + 1, INT_MAX);
-    dp[0] = 0;
-    for (int i = 1; i <= n; i++)
+    int maxi = 0;
+    while (n--)
     {
-        for (int d = 1; d * d <= i; d++)
-
-            dp[i] = ((i - (d * d)) >= 0) ? min(dp[i], 1 + dp[i - (d * d)]) : 0;
+        int x;
+        cin >> x;
+        int c = counttz(x);
+        maxi = max(maxi, c);
     }
-    debug(dp);
-    print(dp[n]);
+    print(maxi);
 }

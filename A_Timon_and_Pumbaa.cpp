@@ -321,7 +321,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -340,9 +340,10 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int a, b;
+    cin >> a >> b;
+    if (a - b >= 0)
+        print(a - b);
+    else
+        print(0);
 }

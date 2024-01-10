@@ -321,17 +321,17 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
-        eprintf("--- Case #%lld start ---\n", i);
-        eprintf("Case #%lld: ", i);
-        solve();
-        eprintf("--- Case #%lld end ---\n", i);
-        eprintf("time = %.5lf\n", getCurrentTime());
-        eprintf("++++++++++++++++++++\n");
-
+        // eprintf("--- Case #%lld start ---\n", i);
+        // eprintf("Case #%lld: ", i);
         // solve();
+        // eprintf("--- Case #%lld end ---\n", i);
+        // eprintf("time = %.5lf\n", getCurrentTime());
+        // eprintf("++++++++++++++++++++\n");
+
+        solve();
     }
 
     return 0;
@@ -340,9 +340,78 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int n;
+    cin >> n;
+    int slash1 = 1;
+    int slash2 = n - 1;
+    Fo(i, 1, (n / 2) + 2)
+    {
+        if (i == (n / 2) + 1)
+        {
+            Fo(j, 0, n / 2)
+            {
+                cout << ("*");
+            }
+            cout << ("X");
+            Fo(j, 0, n / 2)
+            {
+                cout << ("*");
+            }
+            pl;
+            continue;
+        }
+        Fo(j, 1, n)
+        {
+            if (j == slash1)
+            {
+                cout << ("\\");
+            }
+            if (j == slash2)
+            {
+                cout << ("/");
+            }
+            else
+                cout << ("*");
+        }
+        slash1++;
+        slash2--;
+        if (i != n - 1)
+            pl;
+    }
+    slash1--;
+    slash2++;
+    Fo(i, 1, (n / 2) + 1)
+    {
+        if (i == (n / 2) + 1)
+        {
+            Fo(j, 0, n / 2)
+            {
+                cout << ("*");
+            }
+            cout << ("X");
+            Fo(j, 0, n / 2)
+            {
+                cout << ("*");
+            }
+            pl;
+            continue;
+        }
+        Fo(j, 1, n)
+        {
+            if (j == slash1)
+            {
+                cout << ("/");
+            }
+            if (j == slash2)
+            {
+                cout << ("\\");
+            }
+            else
+                cout << ("*");
+        }
+        slash1--;
+        slash2++;
+        if (i != n - 1)
+            pl;
+    }
 }

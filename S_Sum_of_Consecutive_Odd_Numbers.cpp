@@ -340,9 +340,20 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int x, y;
+    cin >> x >> y;
+    int b = max(x, y);
+    int a = min(x, y);
+    debug(a);
+    debug(b);
+    int sum = 0;
+    int flag = (a + 1) & 1;
+    debug(flag);
+    if (flag)
+        for (int i = a + 1; i < b; i += 2)
+            sum += i;
+    else
+        for (int i = a + 2; i < b; i += 2)
+            sum += i;
+    print(sum);
 }

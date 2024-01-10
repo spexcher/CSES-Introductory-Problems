@@ -321,7 +321,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -340,9 +340,23 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int a, b;
+    while (true)
+    {
+        cin >> a >> b;
+        if (a <= 0 or b <= 0)
+            break;
+        else
+        {
+            int start = min(a, b);
+            int end = max(a, b);
+            int sum = 0;
+            Fo(i, start, end + 1)
+            {
+                cout << i << sp;
+                sum += i;
+            }
+            cout << "sum =" << sum << endl;
+        }
+    }
 }

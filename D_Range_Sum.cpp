@@ -45,9 +45,9 @@ using pll = pair<ll, ll>;
 #define pb push_back
 
 #define int long long
-// disable this to storage constrained problems
-// now int behaves as it
-// but if you need long long then use ll
+//   disable this to storage constrained problems
+//   now int behaves as it
+//   but if you need long long then use ll
 
 #define vi vector<int>
 #define vll vector<ll>
@@ -340,9 +340,12 @@ signed main()
 
 void solve()
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
+    int a, b;
+    cin >> a >> b;
+    int l, r;
+    l = min(a, b);
+    r = max(a, b);
+    l--;
+    int sum = (r * (r + 1) / 2) - (l * (l + 1) / 2);
+    print(sum);
 }

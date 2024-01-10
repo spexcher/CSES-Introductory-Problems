@@ -44,10 +44,10 @@ using pll = pair<ll, ll>;
 #define eb emplace_back
 #define pb push_back
 
-#define int long long
-// disable this to storage constrained problems
-// now int behaves as it
-// but if you need long long then use ll
+// #define int long long
+//  disable this to storage constrained problems
+//  now int behaves as it
+//  but if you need long long then use ll
 
 #define vi vector<int>
 #define vll vector<ll>
@@ -313,36 +313,38 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
-void solve();
-signed main()
-{
-    startTime = clock();
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int t = 1;
-    cin >> t;
-    for (int i = 1; i <= t; i++)
-    {
-        eprintf("--- Case #%lld start ---\n", i);
-        eprintf("Case #%lld: ", i);
-        solve();
-        eprintf("--- Case #%lld end ---\n", i);
-        eprintf("time = %.5lf\n", getCurrentTime());
-        eprintf("++++++++++++++++++++\n");
-
-        // solve();
-    }
-
-    return 0;
-}
 //-----------------------------End Snippet--------------------------
-
-void solve()
+class Solution
 {
-    vi v = {1, 2, 3, 4, 5};
-    auto it = find(v.begin(), v.begin() + 2, 1);
-    if (it != v.end())
-        v.erase(it);
-    debug(v);
-}
+public:
+    int jobScheduling(vector<int> &startTimes, vector<int> &endTimes, vector<int> &profits)
+    {
+        int n = profits.size();
+
+        vector<tuple<int, int, int>> jobs(n);
+
+        fo(i, n)
+        {
+            jobs[i] = {endTimes[i], startTimes[i], profits[i]};
+        }
+
+        sortall(jobs);
+
+        vi dp(n + 1);
+        auto gett = [&](int time, const auto &job) -> bool
+        {
+            return time < get<0>(job);
+        };
+        for (int i = 0; i < n; ++i)
+        {
+
+            auto [endTime, startTime, profit] = jobs[i];
+
+            int latestNonConflictJobIndex = ub(jobs.begin(), jobs.begin() + i, startTime, gett) - jobs.begin();
+
+            dp[i + 1] = max(dp[i], dp[latestNonConflictJobIndex] + profit);
+        }
+
+        return dp[n];
+    }
+};
