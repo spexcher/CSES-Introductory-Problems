@@ -44,10 +44,10 @@ using pll = pair<ll, ll>;
 #define eb emplace_back
 #define pb push_back
 
-// #define int long long
-//  disable this to storage constrained problems
-//  now int behaves as it
-//  but if you need long long then use ll
+#define int long long
+// disable this to storage constrained problems
+// now int behaves as it
+// but if you need long long then use ll
 #define sqrt(x) sqrtl((x))
 #define ceil(x) ceill((x))
 #define floor(x) floorl((x))
@@ -318,4 +318,48 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+void solve();
+signed main()
+{
+    startTime = clock();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t = 1;
+    cin >> t;
+    for (int i = 1; i <= t; i++)
+    {
+        eprintf("--- Case #%lld start ---\n", i);
+        eprintf("Case #%lld: ", i);
+        solve();
+        eprintf("--- Case #%lld end ---\n", i);
+        eprintf("time = %.5lf\n", getCurrentTime());
+        eprintf("++++++++++++++++++++\n");
+
+        // solve();
+    }
+
+    return 0;
+}
 //-----------------------------End Snippet--------------------------
+
+void solve()
+{
+    string s;
+    cin >> s;
+    int sum = 0;
+    int maxlength = 0;
+    fo(i, s.size())
+    {
+        if (s[i] == '<')
+            sum++;
+        else
+            sum--;
+        if (sum == 0)
+            maxlength = i + 1;
+        if (sum < 0)
+            break;
+    }
+    // calculate the maximum length from beginning only
+    print(maxlength);
+}

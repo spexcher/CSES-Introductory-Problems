@@ -27,6 +27,7 @@
     "format": "cpp",
     "*.tcc": "cpp",
     "complex": "cpp",
-    "compare": "cpp"
+    "compare": "cpp",
+    "*.snippet": "cpp"
   }
 }

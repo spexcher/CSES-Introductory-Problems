@@ -44,14 +44,11 @@ using pll = pair<ll, ll>;
 #define eb emplace_back
 #define pb push_back
 
-// #define int long long
-//  disable this to storage constrained problems
-//  now int behaves as it
-//  but if you need long long then use ll
-#define sqrt(x) sqrtl((x))
-#define ceil(x) ceill((x))
-#define floor(x) floorl((x))
-#define ceildiv(a, b) ((a + b - 1) / b)
+#define int long long
+// disable this to storage constrained problems
+// now int behaves as it
+// but if you need long long then use ll
+
 #define vi vector<int>
 #define vll vector<ll>
 #define vvb vector<vector<bool>>
@@ -72,8 +69,6 @@ using pll = pair<ll, ll>;
 #define mll map<ll, ll>
 #define mci map<char, int>
 #define mcll map<char, ll>
-#define pqi priority_queue<int>
-#define pqll priority_queue<ll>
 
 #define lb lower_bound
 #define ub upper_bound
@@ -318,4 +313,82 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+void solve();
+signed main()
+{
+    startTime = clock();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t = 1;
+    cin >> t;
+    for (int i = 1; i <= t; i++)
+    {
+        eprintf("--- Case #%lld start ---\n", i);
+        eprintf("Case #%lld: ", i);
+        solve();
+        eprintf("--- Case #%lld end ---\n", i);
+        eprintf("time = %.5lf\n", getCurrentTime());
+        eprintf("++++++++++++++++++++\n");
+
+        // solve();
+    }
+
+    return 0;
+}
 //-----------------------------End Snippet--------------------------
+bool isSubsetSum(vi set, int n, int sum)
+{
+
+    vector<bool> prev(sum + 1);
+    fo(i, n + 1)
+        prev[0] = true;
+    for (int i = 1; i <= sum; i++)
+        prev[i] = false;
+    vector<bool> curr(sum + 1);
+    Fo(i, 1, n + 1)
+    {
+        Fo(j, 1, n + 1)
+        {
+            if (j < set[i - 1])
+                curr[j] = prev[j];
+            if (j >= set[i - 1])
+                curr[j] = prev[j] || prev[j - set[i - 1]];
+        }
+        prev = curr;
+    }
+    return prev[sum];
+}
+void solve()
+{
+
+    int n, x, req;
+    cin >> n >> x >> req;
+    vi v(n);
+    cin >> v;
+    auto poss = [&](int spee)
+    {
+        if (spee - req < 0)
+            return false;
+        int ok = spee - req;
+        if (isSubsetSum(v, v.size(), ok))
+            return true;
+    };
+    int maxreduction = sum(v);
+    int p = x;
+    int hour = 1;
+    while (p - maxreduction <= req)
+    {
+        if (poss(p))
+        {
+            print(hour);
+            return;
+        }
+        else
+        {
+            hour++;
+            p += x;
+        }
+    }
+    pm;
+}

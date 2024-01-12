@@ -48,10 +48,7 @@ using pll = pair<ll, ll>;
 //  disable this to storage constrained problems
 //  now int behaves as it
 //  but if you need long long then use ll
-#define sqrt(x) sqrtl((x))
-#define ceil(x) ceill((x))
-#define floor(x) floorl((x))
-#define ceildiv(a, b) ((a + b - 1) / b)
+
 #define vi vector<int>
 #define vll vector<ll>
 #define vvb vector<vector<bool>>
@@ -72,8 +69,6 @@ using pll = pair<ll, ll>;
 #define mll map<ll, ll>
 #define mci map<char, int>
 #define mcll map<char, ll>
-#define pqi priority_queue<int>
-#define pqll priority_queue<ll>
 
 #define lb lower_bound
 #define ub upper_bound

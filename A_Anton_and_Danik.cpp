@@ -44,14 +44,11 @@ using pll = pair<ll, ll>;
 #define eb emplace_back
 #define pb push_back
 
-// #define int long long
-//  disable this to storage constrained problems
-//  now int behaves as it
-//  but if you need long long then use ll
+#define int long long
+// disable this to storage constrained problems
+// now int behaves as it
+// but if you need long long then use ll
 #define sqrt(x) sqrtl((x))
-#define ceil(x) ceill((x))
-#define floor(x) floorl((x))
-#define ceildiv(a, b) ((a + b - 1) / b)
 #define vi vector<int>
 #define vll vector<ll>
 #define vvb vector<vector<bool>>
@@ -72,8 +69,6 @@ using pll = pair<ll, ll>;
 #define mll map<ll, ll>
 #define mci map<char, int>
 #define mcll map<char, ll>
-#define pqi priority_queue<int>
-#define pqll priority_queue<ll>
 
 #define lb lower_bound
 #define ub upper_bound
@@ -318,4 +313,50 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+void solve();
+signed main()
+{
+    startTime = clock();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t = 1;
+    // cin >> t;
+    for (int i = 1; i <= t; i++)
+    {
+        eprintf("--- Case #%lld start ---\n", i);
+        eprintf("Case #%lld: ", i);
+        solve();
+        eprintf("--- Case #%lld end ---\n", i);
+        eprintf("time = %.5lf\n", getCurrentTime());
+        eprintf("++++++++++++++++++++\n");
+
+        // solve();
+    }
+
+    return 0;
+}
 //-----------------------------End Snippet--------------------------
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vc v(n);
+    cin >> v;
+    debug(v);
+    int A = 0, D = 0;
+    fo(i, n)
+    {
+        if (v[i] == 'A')
+            A++;
+        else if (v[i] == 'D')
+            D++;
+    }
+    if (A > D)
+        print("Anton");
+    else if (A == D)
+        print("Friendship");
+    else
+        print("Danik");
+}

@@ -44,10 +44,10 @@ using pll = pair<ll, ll>;
 #define eb emplace_back
 #define pb push_back
 
-// #define int long long
-//  disable this to storage constrained problems
-//  now int behaves as it
-//  but if you need long long then use ll
+#define int long long
+// disable this to storage constrained problems
+// now int behaves as it
+// but if you need long long then use ll
 #define sqrt(x) sqrtl((x))
 #define ceil(x) ceill((x))
 #define floor(x) floorl((x))
@@ -318,4 +318,81 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+void solve();
+signed main()
+{
+    startTime = clock();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t = 1;
+    // cin >> t;
+    for (int i = 1; i <= t; i++)
+    {
+        eprintf("--- Case #%lld start ---\n", i);
+        eprintf("Case #%lld: ", i);
+        solve();
+        eprintf("--- Case #%lld end ---\n", i);
+        eprintf("time = %.5lf\n", getCurrentTime());
+        eprintf("++++++++++++++++++++\n");
+
+        // solve();
+    }
+
+    return 0;
+}
 //-----------------------------End Snippet--------------------------
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vi v(n);
+    cin >> v;
+    int sum = 0;
+    int maxsum = 0;
+    int index = 0;
+    fo(i, n)
+    {
+        if (v[i] == 1)
+        {
+            sum++;
+            if (sum > maxsum)
+            {
+                maxsum = sum;
+                index = i + 1;
+            }
+        }
+        else
+            sum--;
+    }
+    cout << maxsum << sp << index << sp;
+    int length = 0;
+    int maxlength = 0;
+    fo(i, n)
+    {
+        if (v[i] == 1)
+        {
+            sum = 1;
+            length = 0;
+            int k = 0;
+            for (k = i + 1; k < n; k++)
+            {
+                if (v[k] == 1)
+                    sum++;
+                else
+                    sum--;
+                if (sum == 0)
+                    break;
+            }
+            length = k - i + 1;
+            if (length > maxlength)
+            {
+                index = i + 1;
+                maxlength = length;
+            }
+            i = k;
+        }
+    }
+    print(maxlength << sp << index);
+}
